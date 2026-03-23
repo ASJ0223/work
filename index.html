@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 커리어 자기소개서 초안 작성</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; }
+        .prompt-box { background-color: #f8fafc; border-left: 4px solid #3b82f6; padding: 1.2rem; border-radius: 0 0.5rem 0.5rem 0; margin-bottom: 0.5rem; white-space: pre-wrap; font-family: monospace; font-size: 0.9rem; color: #334155; line-height: 1.5; }
+        
+        /* 인쇄 최적화 설정 */
+        @media print {
+            body { background-color: white; }
+            .no-print { display: none !important; }
+            .print-break-inside-avoid { break-inside: avoid; }
+            .print-page-break { page-break-before: always; }
+            input, textarea { border: none !important; resize: none; background: transparent !important; }
+            input::placeholder, textarea::placeholder { color: transparent; }
+            
+            /* Step 6(최종 1장)만 인쇄하기 모드일 때 적용되는 속성 */
+            body.print-step6-only header.main-header,
+            body.print-step6-only section:not(#step-6),
+            body.print-step6-only footer,
+            body.print-step6-only #progress-container {
+                display: none !important;
+            }
+            body.print-step6-only #step-6 {
+                margin: 0 !important;
+                padding: 0 !important;
+                border: none !important;
+                box-shadow: none !important;
+            }
+            body.print-step6-only .final-page-container {
+                border: none !important;
+                padding: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 leading-relaxed pb-12 relative">
+
+    <!-- 기능 3: 상단 고정 진척도 표시 바 (Progress Bar) -->
+    <div id="progress-container" class="sticky top-0 z-50 bg-white/90 backdrop-blur shadow-sm border-b border-gray-200 no-print transition-all duration-300">
+        <div class="max-w-4xl mx-auto px-4 md:px-8 py-3 flex items-center justify-between">
+            <span class="text-sm font-bold text-blue-700" id="progress-text">진행 상황: 준비</span>
+            <div class="w-1/2 bg-gray-200 rounded-full h-2.5">
+                <div id="progress-bar-fill" class="bg-blue-600 h-2.5 rounded-full transition-all duration-500 ease-out" style="width: 0%"></div>
+            </div>
+            <div class="text-xs font-semibold text-gray-400 bg-gray-100 px-2 py-1 rounded">자동 저장 중 💾</div>
+        </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 shadow-lg rounded-b-lg mt-4">
+        
+        <!-- Header -->
+        <header class="main-header border-b-2 border-gray-800 pb-6 mb-10 text-center">
+            <p class="text-sm font-bold text-gray-500 tracking-widest mb-2">PART 1 통합 워크시트</p>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900">커리어마이징: 나를 한 장으로 정리하기</h1>
+            <p class="mt-4 text-gray-600 font-medium">흥미, 강점, 가치관의 교집합을 찾아 나만의 커리어 방향성을 확립하는 실습입니다.</p>
+        </header>
+
+        <!-- Step 1 -->
+        <section id="step-1" class="mb-12">
+            <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-2">
+                Step 1. 흩어진 조각 모으기 (이전 결과물 수집)
+            </h3>
+            <p class="text-gray-600 text-sm mb-4 font-medium">👉 이전 챕터 워크시트에서 완성한 결론 문장이나 키워드를 아래 표에 옮겨 적어보세요. 아직 완료하지 못한 챕터가 있다면 빈칸으로 두어도 좋습니다.</p>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full border-collapse border border-gray-300 text-sm">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="border border-gray-300 p-3 w-1/5">항목</th>
+                            <th class="border border-gray-300 p-3 w-1/3">핵심 질문</th>
+                            <th class="border border-gray-300 p-3">내 결론 문장 (직접 작성)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 p-3 font-semibold text-center">Ch 1-1</td>
+                            <td class="border border-gray-300 p-3 text-gray-700">너는 언제 행복하니?<br><span class="text-gray-500 text-xs">→ 흥미 영역 발견</span></td>
+                            <td class="border border-gray-300 p-3">
+                                나는 <input type="text" class="border-b border-gray-400 bg-transparent w-32 px-1 focus:outline-none focus:border-blue-500 text-center" placeholder="_____________"> 할 때 가장 행복하다.<br>
+                                이는 내가 <input type="text" class="border-b border-gray-400 bg-transparent w-32 px-1 focus:outline-none focus:border-blue-500 text-center mt-1" placeholder="_____________"> 분야에 관심이 있다는 뜻이다.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-3 font-semibold text-center">Ch 1-2</td>
+                            <td class="border border-gray-300 p-3 text-gray-700">네 몰입의 순간은?<br><span class="text-gray-500 text-xs">→ 잠재 강점 탐색</span></td>
+                            <td class="border border-gray-300 p-3">
+                                가장 몰입한 활동 패턴: <input type="text" class="border-b border-gray-400 bg-transparent w-40 px-1 focus:outline-none focus:border-blue-500 text-center" placeholder="________________"><br>
+                                연결되는 직무 아이디어: <input type="text" class="border-b border-gray-400 bg-transparent w-40 px-1 focus:outline-none focus:border-blue-500 text-center mt-1" placeholder="________________">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-3 font-semibold text-center">Ch 1-3</td>
+                            <td class="border border-gray-300 p-3 text-gray-700">네가 잘하는 건 뭐야?<br><span class="text-gray-500 text-xs">→ 타인이 발견한 강점</span></td>
+                            <td class="border border-gray-300 p-3">
+                                강점 Top 3: <br>
+                                ① <input type="text" class="border-b border-gray-400 bg-transparent w-48 px-1 focus:outline-none focus:border-blue-500" placeholder="________________"><br>
+                                ② <input type="text" class="border-b border-gray-400 bg-transparent w-48 px-1 focus:outline-none focus:border-blue-500" placeholder="________________"><br>
+                                ③ <input type="text" class="border-b border-gray-400 bg-transparent w-48 px-1 focus:outline-none focus:border-blue-500" placeholder="________________">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-3 font-semibold text-center">Ch 1-4</td>
+                            <td class="border border-gray-300 p-3 text-gray-700">왜 그 일을 피하는 걸까?<br><span class="text-gray-500 text-xs">→ 회피 패턴 & 대안</span></td>
+                            <td class="border border-gray-300 p-3">
+                                피하는 이유(숨은 믿음): <input type="text" class="border-b border-gray-400 bg-transparent w-40 px-1 focus:outline-none focus:border-blue-500" placeholder="________________"><br>
+                                대안 관점: <input type="text" class="border-b border-gray-400 bg-transparent w-48 px-1 mt-1 focus:outline-none focus:border-blue-500" placeholder="________________">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-3 font-semibold text-center">Ch 1-5</td>
+                            <td class="border border-gray-300 p-3 text-gray-700">내겐 어떤 재능이 있을까?<br><span class="text-gray-500 text-xs">→ 핵심 재능 동사</span></td>
+                            <td class="border border-gray-300 p-3">
+                                자주 쓰인 기술 동사:<br>
+                                ① <input type="text" class="border-b border-gray-400 bg-transparent w-48 px-1 focus:outline-none focus:border-blue-500" placeholder="________________"><br>
+                                ② <input type="text" class="border-b border-gray-400 bg-transparent w-48 px-1 focus:outline-none focus:border-blue-500" placeholder="________________"><br>
+                                ③ <input type="text" class="border-b border-gray-400 bg-transparent w-48 px-1 focus:outline-none focus:border-blue-500" placeholder="________________">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-3 font-semibold text-center">Ch 1-6</td>
+                            <td class="border border-gray-300 p-3 text-gray-700">내게 중요한 것은?<br><span class="text-gray-500 text-xs">→ 가치관 우선순위</span></td>
+                            <td class="border border-gray-300 p-3">
+                                무급/열정 영역(진짜 하고 싶은 일): <input type="text" class="border-b border-gray-400 bg-transparent w-40 px-1 focus:outline-none focus:border-blue-500" placeholder="________________"><br>
+                                가장 중요한 가치: <input type="text" class="border-b border-gray-400 bg-transparent w-48 mt-1 px-1 focus:outline-none focus:border-blue-500" placeholder="________________">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Step 2 -->
+        <section id="step-2" class="mb-12 print-break-inside-avoid">
+            <h3 class="text-xl font-bold text-blue-700 mb-3">Step 2. 3대 영역 핵심 키워드 추출하기</h3>
+            <p class="text-gray-600 text-sm mb-4 font-medium">👉 Step 1의 문장들을 읽어보며, 유독 반복되거나 마음이 끌리는 단어들을 세 영역 상자에 나누어 담아보세요. <span class="text-blue-600 font-bold">(여기에 입력하면 아래 Step 3 프롬프트가 자동으로 완성됩니다!)</span></p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- Interest -->
+                <div class="border border-gray-300 rounded-lg overflow-hidden">
+                    <div class="bg-rose-50 p-3 border-b border-gray-300 text-center font-bold text-rose-800">💡 흥미 (Interest)</div>
+                    <div class="p-4 text-sm text-gray-600 bg-white">
+                        <p class="mb-2 h-16 text-xs text-gray-500 border-b border-dashed border-gray-200 pb-2">내가 좋아하고 끌리는 것<br>자주 등장한 관심 활동·분야<br>(예: 사람, 기획, 글쓰기 등)</p>
+                        <div class="space-y-2 mt-3">
+                            <div>① <input type="text" class="interest-input border-b border-gray-300 w-full focus:outline-none focus:border-rose-500" placeholder="키워드 입력"></div>
+                            <div>② <input type="text" class="interest-input border-b border-gray-300 w-full focus:outline-none focus:border-rose-500" placeholder="키워드 입력"></div>
+                            <div>③ <input type="text" class="interest-input border-b border-gray-300 w-full focus:outline-none focus:border-rose-500" placeholder="키워드 입력"></div>
+                            <div>④ <input type="text" class="interest-input border-b border-gray-300 w-full focus:outline-none focus:border-rose-500" placeholder="키워드 입력"></div>
+                            <div>⑤ <input type="text" class="interest-input border-b border-gray-300 w-full focus:outline-none focus:border-rose-500" placeholder="키워드 입력"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Strength -->
+                <div class="border border-gray-300 rounded-lg overflow-hidden">
+                    <div class="bg-blue-50 p-3 border-b border-gray-300 text-center font-bold text-blue-800">💪 강점 (Strength)</div>
+                    <div class="p-4 text-sm text-gray-600 bg-white">
+                        <p class="mb-2 h-16 text-xs text-gray-500 border-b border-dashed border-gray-200 pb-2">남들에게 잘한다고 인정받은 것<br>자주 쓰인 나의 기술 동사<br>(예: 설득하다, 분석하다 등)</p>
+                        <div class="space-y-2 mt-3">
+                            <div>① <input type="text" class="strength-input border-b border-gray-300 w-full focus:outline-none focus:border-blue-500" placeholder="키워드 입력"></div>
+                            <div>② <input type="text" class="strength-input border-b border-gray-300 w-full focus:outline-none focus:border-blue-500" placeholder="키워드 입력"></div>
+                            <div>③ <input type="text" class="strength-input border-b border-gray-300 w-full focus:outline-none focus:border-blue-500" placeholder="키워드 입력"></div>
+                            <div>④ <input type="text" class="strength-input border-b border-gray-300 w-full focus:outline-none focus:border-blue-500" placeholder="키워드 입력"></div>
+                            <div>⑤ <input type="text" class="strength-input border-b border-gray-300 w-full focus:outline-none focus:border-blue-500" placeholder="키워드 입력"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Value -->
+                <div class="border border-gray-300 rounded-lg overflow-hidden">
+                    <div class="bg-emerald-50 p-3 border-b border-gray-300 text-center font-bold text-emerald-800">🧭 가치관 (Value)</div>
+                    <div class="p-4 text-sm text-gray-600 bg-white">
+                        <p class="mb-2 h-16 text-xs text-gray-500 border-b border-dashed border-gray-200 pb-2">일을 통해 얻고 싶은 것<br>포기할 수 없는 우선순위 조건<br>(예: 성장, 자율성, 사회기여 등)</p>
+                        <div class="space-y-2 mt-3">
+                            <div>① <input type="text" class="value-input border-b border-gray-300 w-full focus:outline-none focus:border-emerald-500" placeholder="키워드 입력"></div>
+                            <div>② <input type="text" class="value-input border-b border-gray-300 w-full focus:outline-none focus:border-emerald-500" placeholder="키워드 입력"></div>
+                            <div>③ <input type="text" class="value-input border-b border-gray-300 w-full focus:outline-none focus:border-emerald-500" placeholder="키워드 입력"></div>
+                            <div>④ <input type="text" class="value-input border-b border-gray-300 w-full focus:outline-none focus:border-emerald-500" placeholder="키워드 입력"></div>
+                            <div>⑤ <input type="text" class="value-input border-b border-gray-300 w-full focus:outline-none focus:border-emerald-500" placeholder="키워드 입력"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 3 -->
+        <section id="step-3" class="mb-12 print-page-break">
+            <h3 class="text-xl font-bold text-blue-700 mb-3">Step 3. AI 분석 코치에게 질문하기</h3>
+            <p class="text-gray-600 text-sm mb-6 font-medium">👉 Step 2에서 입력한 키워드가 아래 프롬프트에 자동으로 반영됩니다. [복사하기] 버튼을 눌러 AI(ChatGPT, Gemini 등)에게 분석을 요청하세요.</p>
+            
+            <div class="space-y-6">
+                <!-- 프롬프트 1 -->
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <h4 class="font-bold text-gray-800 flex items-center gap-1"><span class="bg-gray-800 text-white w-5 h-5 flex items-center justify-center rounded-full text-xs">1</span> 기본 교집합 & 커리어 방향 분석</h4>
+                        <button onclick="copyPrompt('prompt-1')" class="no-print bg-blue-100 text-blue-700 hover:bg-blue-200 text-xs font-bold py-1 px-3 rounded flex items-center gap-1 transition-colors">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            복사하기
+                        </button>
+                    </div>
+                    <div id="prompt-1" class="prompt-box">나는 진로 탐색 중인 대학생이야.
+아래는 자기 이해 워크시트를 통해 추출한 나의 키워드야.
+
+【흥미 키워드】: [ 여기에 흥미 키워드 입력 ]
+【강점 키워드】: [ 여기에 강점 키워드 입력 ]
+【가치관 키워드】: [ 여기에 가치관 키워드 입력 ]
+
+이 키워드들을 바탕으로 다음 4가지를 분석해줘:
+① 세 영역에서 공통으로 등장하거나 연결되는 핵심 키워드는?
+② 이 키워드들로 만들 수 있는 "나는 이런 사람이다" 문장 3개 제안
+③ 이 키워드와 잘 맞는 대기업/스타트업 직무군 3~5개와 그 이유
+④ 내가 놓치고 있을 수 있는 강점이나 가능성이 있다면 솔직하게 짚어줘.</div>
+                </div>
+
+                <!-- 프롬프트 2 -->
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <h4 class="font-bold text-gray-800 flex items-center gap-1"><span class="bg-gray-800 text-white w-5 h-5 flex items-center justify-center rounded-full text-xs">2</span> 모순·갈등 심화 탐색</h4>
+                        <button onclick="copyPrompt('prompt-2')" class="no-print bg-gray-200 text-gray-700 hover:bg-gray-300 text-xs font-bold py-1 px-3 rounded flex items-center gap-1 transition-colors">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            복사하기
+                        </button>
+                    </div>
+                    <div id="prompt-2" class="prompt-box">분석한 결과를 이어서 더 깊이 탐색하고 싶어.
+
+① 내 키워드 중에서 서로 충돌하거나 긴장 관계에 있는 것이 있어?
+② 내 성향으로 봤을 때, 번아웃에 빠지기 쉬운 직무 유형은 무엇일까?
+③ 이 분석 결과를 가장 잘 표현할 "커리어 핵심 문장" 한 줄을 만들어줘.
+   형식: 나는 [강점]을 바탕으로 [가치]를 실현하는 [방향]을 원한다.</div>
+                </div>
+
+                <!-- 프롬프트 3 -->
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <h4 class="font-bold text-gray-800 flex items-center gap-1"><span class="bg-gray-800 text-white w-5 h-5 flex items-center justify-center rounded-full text-xs">3</span> 직무 매칭 & 구체적 액션 플랜</h4>
+                        <button onclick="copyPrompt('prompt-3')" class="no-print bg-gray-200 text-gray-700 hover:bg-gray-300 text-xs font-bold py-1 px-3 rounded flex items-center gap-1 transition-colors">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            복사하기
+                        </button>
+                    </div>
+                    <div id="prompt-3" class="prompt-box">분석 결과를 바탕으로 실행 전략을 세우고 싶어.
+- 현재 [ 대학교 학년 입력 ] 재학 중
+- 지금 갖고 있는 경험: [ 경험 간단히 입력 ]
+
+① 내 키워드와 가장 잘 맞는 직무 Top 3와, "이번 학기"에 할 수 있는 구체적 행동 1가지씩 제안해줘.
+② 마지막으로, 지금 나에게 가장 필요한 질문 하나를 던져줘.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 4 -->
+        <section id="step-4" class="mb-12 print-page-break">
+            <h3 class="text-xl font-bold text-blue-700 mb-3">Step 4. AI 분석 결과 기록 & 피드백</h3>
+            <p class="text-gray-600 text-sm mb-4 font-medium">👉 AI가 제시한 답변 중 와닿은 내용이나 거부감이 들었던 내용을 정리하고, 솔직한 반응을 체크해 보세요.</p>
+            
+            <table class="w-full border-collapse border border-gray-300 text-sm mb-6">
+                <thead>
+                    <tr class="bg-gray-100">
+                        <th class="border border-gray-300 p-3 w-1/4 text-gray-700">분석 항목</th>
+                        <th class="border border-gray-300 p-3 text-gray-700">핵심 내용 요약 (AI 답변 + 나의 반응)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border border-gray-300 p-3 font-semibold text-center bg-gray-50">AI가 짚어준<br>교집합 키워드</td>
+                        <td class="border border-gray-300 p-3 space-y-2">
+                            <div>• <input type="text" class="border-b border-gray-300 w-full focus:outline-none" placeholder="키워드 요약 기록"></div>
+                            <div>• <input type="text" class="border-b border-gray-300 w-full focus:outline-none" placeholder=""></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 p-3 font-semibold text-center bg-gray-50">추천 직무군</td>
+                        <td class="border border-gray-300 p-3 space-y-2">
+                            <div class="flex">① 직무: <input type="text" class="border-b border-gray-300 w-1/3 mx-2 focus:outline-none text-center"> 이유: <input type="text" class="border-b border-gray-300 flex-1 ml-2 focus:outline-none"></div>
+                            <div class="flex">② 직무: <input type="text" class="border-b border-gray-300 w-1/3 mx-2 focus:outline-none text-center"> 이유: <input type="text" class="border-b border-gray-300 flex-1 ml-2 focus:outline-none"></div>
+                            <div class="flex">③ 직무: <input type="text" class="border-b border-gray-300 w-1/3 mx-2 focus:outline-none text-center"> 이유: <input type="text" class="border-b border-gray-300 flex-1 ml-2 focus:outline-none"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 p-3 font-semibold text-center bg-gray-50">커리어<br>핵심 문장</td>
+                        <td class="border border-gray-300 p-4 font-medium leading-relaxed bg-blue-50/30 text-center">
+                            "나는 [<input type="text" class="border-b border-gray-400 bg-transparent w-32 text-center mx-1 focus:outline-none focus:border-blue-500 text-blue-700" placeholder="                    ">] 강점을 바탕으로<br>
+                            [<input type="text" class="border-b border-gray-400 bg-transparent w-32 text-center mx-1 focus:outline-none focus:border-blue-500 text-emerald-700" placeholder="                    ">] 가치를 실현하는<br>
+                            [<input type="text" class="border-b border-gray-400 bg-transparent w-40 text-center mx-1 focus:outline-none focus:border-blue-500 text-rose-700" placeholder="                    ">] 직무 방향을 원한다."
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4 class="font-bold text-gray-800 mb-2 text-sm">✔ 나의 피드백 체크</h4>
+            <table class="w-full border-collapse border border-gray-300 text-sm">
+                <thead>
+                    <tr class="bg-gray-100">
+                        <th class="border border-gray-300 p-2 w-1/2">스스로에게 묻는 질문</th>
+                        <th class="border border-gray-300 p-2 w-1/5">O / X</th>
+                        <th class="border border-gray-300 p-2">짧은 메모</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border border-gray-300 p-3">결과를 읽으며 "맞아, 이게 나야"라고 느꼈는가?</td>
+                        <td class="border border-gray-300 p-3 text-center"><label class="mr-3 cursor-pointer"><input type="radio" name="chk1" value="O"> O</label> <label class="cursor-pointer"><input type="radio" name="chk1" value="X"> X</label></td>
+                        <td class="border border-gray-300 p-2"><input type="text" class="w-full border-b border-gray-300 focus:outline-none bg-transparent"></td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 p-3">"이건 아닌데"라며 거부감이 들었던 항목이 있는가?</td>
+                        <td class="border border-gray-300 p-3 text-center"><label class="mr-3 cursor-pointer"><input type="radio" name="chk2" value="O"> O</label> <label class="cursor-pointer"><input type="radio" name="chk2" value="X"> X</label></td>
+                        <td class="border border-gray-300 p-2"><input type="text" class="w-full border-b border-gray-300 focus:outline-none bg-transparent"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Step 5 -->
+        <section id="step-5" class="mb-12 print-break-inside-avoid">
+            <h3 class="text-xl font-bold text-blue-700 mb-3">Step 5. 최종 교집합(핵심) 키워드 맵 작성</h3>
+            <p class="text-gray-600 text-sm mb-6 font-medium">👉 나의 원래 키워드와 AI의 분석을 융합하여, 3가지 영역을 관통하는 진짜 '교집합'을 한가운데에 적어보세요.</p>
+
+            <div class="border-2 border-gray-800 rounded-xl overflow-hidden text-center text-sm md:text-base mb-4 bg-white shadow-sm">
+                <div class="grid grid-cols-3 divide-x divide-gray-300">
+                    
+                    <div class="p-4 bg-rose-50 text-rose-800 font-bold flex items-center justify-center">💡 흥미</div>
+                    <div class="p-4 bg-yellow-100 flex items-center justify-center font-bold text-yellow-800 border-b-2 border-gray-800">★ 핵심 교집합 ★</div>
+                    <div class="p-4 bg-blue-50 text-blue-800 font-bold flex items-center justify-center">💪 강점</div>
+                    
+                    <!-- 왼쪽 열 (흥미) -->
+                    <div class="p-4 flex flex-col items-center justify-center min-h-[160px]">
+                        ① <input type="text" class="border-b border-gray-300 w-full mb-2 text-center bg-transparent focus:outline-none"><br>
+                        ② <input type="text" class="border-b border-gray-300 w-full mb-2 text-center bg-transparent focus:outline-none"><br>
+                        ③ <input type="text" class="border-b border-gray-300 w-full text-center bg-transparent focus:outline-none">
+                    </div>
+                    
+                    <!-- 중앙 열 (교집합 영역) -->
+                    <div class="p-0 flex flex-col border-x-2 border-gray-800 relative bg-white">
+                        <div class="p-2 flex-1 flex flex-col items-center justify-center bg-purple-50 border-b border-gray-300">
+                            <span class="text-xs font-semibold text-purple-700 mb-1">흥미+강점 공통점</span>
+                            <textarea class="w-full h-10 bg-transparent border-none text-center resize-none text-sm focus:outline-none placeholder-purple-300" placeholder=""></textarea>
+                        </div>
+                        
+                        <div class="p-4 mx-2 my-2 flex flex-col items-center justify-center bg-yellow-50 border-2 border-yellow-400 rounded-lg shadow-sm z-10">
+                            <div class="w-full flex items-center justify-center mb-2">
+                                <span class="font-bold text-yellow-700 mr-1">①</span>
+                                <input type="text" class="border-b-2 border-yellow-400 w-3/4 bg-transparent text-center focus:outline-none placeholder-yellow-400 font-bold text-gray-800" placeholder="가장 핵심 키워드">
+                            </div>
+                            <div class="w-full flex items-center justify-center">
+                                <span class="font-bold text-yellow-700 mr-1">②</span>
+                                <input type="text" class="border-b-2 border-yellow-400 w-3/4 bg-transparent text-center focus:outline-none placeholder-yellow-400 font-bold text-gray-800" placeholder="두 번째 핵심">
+                            </div>
+                        </div>
+                        
+                        <div class="p-2 flex-1 flex flex-col items-center justify-center bg-teal-50 border-t border-gray-300 border-b-2 border-gray-800">
+                            <span class="text-xs font-semibold text-teal-700 mb-1">강점+가치관 공통점</span>
+                            <textarea class="w-full h-10 bg-transparent border-none text-center resize-none text-sm focus:outline-none placeholder-teal-300" placeholder=""></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- 오른쪽 열 (강점) -->
+                    <div class="p-4 flex flex-col items-center justify-center min-h-[160px]">
+                        ① <input type="text" class="border-b border-gray-300 w-full mb-2 text-center bg-transparent focus:outline-none"><br>
+                        ② <input type="text" class="border-b border-gray-300 w-full mb-2 text-center bg-transparent focus:outline-none"><br>
+                        ③ <input type="text" class="border-b border-gray-300 w-full text-center bg-transparent focus:outline-none">
+                    </div>
+
+                    <div class="p-4 flex flex-col items-center justify-center bg-orange-50">
+                        <span class="text-xs font-semibold text-orange-700 mb-1">흥미+가치관 공통점</span>
+                        <textarea class="w-full h-12 bg-transparent border-none text-center resize-none text-sm focus:outline-none placeholder-orange-300" placeholder=""></textarea>
+                    </div>
+                    <div class="p-4 bg-emerald-50 text-emerald-800 font-bold flex items-center justify-center border-x-2 border-b-2 border-gray-800">🧭 가치관</div>
+                    <div class="p-4 flex flex-col items-center justify-center bg-teal-50">
+                        <span class="text-xs font-semibold text-teal-700 mb-1">가치관 메모</span>
+                        <textarea class="w-full h-12 bg-transparent border-none text-center resize-none text-sm focus:outline-none placeholder-teal-300" placeholder=""></textarea>
+                    </div>
+
+                    <div class="bg-gray-50 border-t border-gray-300 col-span-1"></div>
+                    <div class="p-4 flex flex-col items-center justify-center min-h-[120px] border-x-2 border-b-2 border-gray-800">
+                        ① <input type="text" class="border-b border-gray-300 w-full mb-2 text-center bg-transparent focus:outline-none"><br>
+                        ② <input type="text" class="border-b border-gray-300 w-full mb-2 text-center bg-transparent focus:outline-none"><br>
+                        ③ <input type="text" class="border-b border-gray-300 w-full text-center bg-transparent focus:outline-none">
+                    </div>
+                    <div class="bg-gray-50 border-t border-gray-300 col-span-1"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 6 -->
+        <section id="step-6" class="mb-12 print-page-break">
+            <h3 class="text-xl font-bold text-blue-700 mb-3 no-print">Step 6. 나의 커리어 자기소개서 한 장 (최종)</h3>
+            <p class="text-gray-600 text-sm mb-6 font-medium no-print">👉 모든 과정을 종합하여, 현재 시점에서 파악한 '나'를 하나의 완성된 양식으로 정리합니다. 작성을 완료한 후 문서를 인쇄하거나 PDF로 저장해두세요.</p>
+
+            <!-- The Final 1-Pager Form -->
+            <div class="final-page-container border-2 border-gray-900 p-8 rounded-sm bg-white shadow-sm print:shadow-none mb-8 relative">
+                <div class="flex justify-between items-end border-b border-gray-300 pb-4 mb-8">
+                    <h2 class="text-2xl md:text-3xl font-black text-gray-900 tracking-tight">나의 커리어 자기소개서</h2>
+                    <div class="text-sm font-semibold text-gray-500 flex items-center">작성일: <input type="date" class="border-b border-gray-400 focus:outline-none font-normal text-gray-700 ml-2"></div>
+                </div>
+                
+                <div class="flex flex-wrap gap-4 mb-10 text-lg font-bold">
+                    <div class="flex items-center">이름: <input type="text" class="border-b-2 border-gray-400 ml-2 w-32 focus:outline-none focus:border-blue-600 px-1 font-normal"></div>
+                    <div class="flex items-center">소속: <input type="text" class="border-b-2 border-gray-400 ml-2 w-48 focus:outline-none focus:border-blue-600 px-1 font-normal" placeholder="학교/전공"></div>
+                </div>
+
+                <div class="mb-10">
+                    <h4 class="text-xl font-bold mb-4 flex items-center gap-2"><span class="w-1.5 h-6 bg-blue-600 inline-block rounded"></span> 1. 나는 이런 사람이다</h4>
+                    <div class="bg-gray-50 p-6 rounded-lg leading-loose text-lg font-medium text-gray-800 border border-gray-200">
+                        나는 [<input type="text" class="border-b-2 border-gray-500 bg-transparent text-center w-32 focus:outline-none text-blue-700 placeholder-gray-300" placeholder="핵심 강점">]을 바탕으로 
+                        [<input type="text" class="border-b-2 border-gray-500 bg-transparent text-center w-32 focus:outline-none text-emerald-700 placeholder-gray-300" placeholder="추구하는 가치">]를 실현하는 
+                        [<input type="text" class="border-b-2 border-gray-500 bg-transparent text-center w-40 focus:outline-none text-rose-700 placeholder-gray-300" placeholder="희망 직무 방향">]을 원한다.
+                        
+                        <div class="mt-4">
+                            <span class="text-sm text-gray-400 font-normal block mb-1">※ 자유 설명 추가:</span>
+                            <textarea class="w-full h-16 border border-gray-300 rounded p-2 bg-white focus:outline-none focus:border-blue-400 text-base" placeholder="위 문장에 대한 구체적인 설명을 자유롭게 덧붙여 보세요."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-10">
+                    <h4 class="text-xl font-bold mb-4 flex items-center gap-2"><span class="w-1.5 h-6 bg-yellow-400 inline-block rounded"></span> 2. 나의 핵심 키워드</h4>
+                    <div class="space-y-3 pl-4 border-l-4 border-gray-200 text-lg text-gray-700 font-medium bg-gray-50 p-4 rounded-r-lg">
+                        <div><span class="inline-block w-16 text-rose-700">흥미:</span> [ <input type="text" class="border-b border-gray-400 w-24 text-center focus:outline-none bg-transparent" placeholder="           "> ] · [ <input type="text" class="border-b border-gray-400 w-24 text-center focus:outline-none bg-transparent" placeholder="           "> ] · [ <input type="text" class="border-b border-gray-400 w-24 text-center focus:outline-none bg-transparent" placeholder="           "> ]</div>
+                        <div><span class="inline-block w-16 text-blue-700">강점:</span> [ <input type="text" class="border-b border-gray-400 w-24 text-center focus:outline-none bg-transparent" placeholder="           "> ] · [ <input type="text" class="border-b border-gray-400 w-24 text-center focus:outline-none bg-transparent" placeholder="           "> ] · [ <input type="text" class="border-b border-gray-400 w-24 text-center focus:outline-none bg-transparent" placeholder="           "> ]</div>
+                        <div><span class="inline-block w-16 text-emerald-700">가치:</span> [ <input type="text" class="border-b border-gray-400 w-24 text-center focus:outline-none bg-transparent" placeholder="           "> ] · [ <input type="text" class="border-b border-gray-400 w-24 text-center focus:outline-none bg-transparent" placeholder="           "> ] · [ <input type="text" class="border-b border-gray-400 w-24 text-center focus:outline-none bg-transparent" placeholder="           "> ]</div>
+                        <div class="pt-3 font-bold text-gray-900 border-t border-gray-200 mt-2"><span class="inline-block w-28 text-yellow-600">교집합(핵심):</span> ★ [ <input type="text" class="border-b-2 border-yellow-500 w-28 text-center focus:outline-none text-xl bg-transparent" placeholder="           "> ] ★ [ <input type="text" class="border-b-2 border-yellow-500 w-28 text-center focus:outline-none text-xl bg-transparent" placeholder="           "> ]</div>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="text-xl font-bold mb-4 flex items-center gap-2"><span class="w-1.5 h-6 bg-teal-500 inline-block rounded"></span> 3. 내가 탐색해 볼 직무 방향</h4>
+                    <div class="space-y-4 bg-white">
+                        <div class="flex flex-col md:flex-row md:items-center">
+                            <span class="font-bold w-16 mb-1 md:mb-0 text-gray-800">1순위:</span> 
+                            [ <input type="text" class="border-b border-gray-400 w-full md:w-64 mx-2 focus:outline-none font-semibold text-teal-700" placeholder="예: 서비스 기획"> ] 
+                            <span class="hidden md:inline mx-2 text-gray-400">→</span> 
+                            <span class="mt-1 md:mt-0 font-medium text-gray-600">이유: [ <input type="text" class="border-b border-gray-400 w-full md:w-80 mx-1 focus:outline-none" placeholder="내 키워드와 맞는 이유"> ]</span>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-center">
+                            <span class="font-bold w-16 mb-1 md:mb-0 text-gray-800">2순위:</span> 
+                            [ <input type="text" class="border-b border-gray-400 w-full md:w-64 mx-2 focus:outline-none font-semibold text-teal-700" placeholder=""> ] 
+                            <span class="hidden md:inline mx-2 text-gray-400">→</span> 
+                            <span class="mt-1 md:mt-0 font-medium text-gray-600">이유: [ <input type="text" class="border-b border-gray-400 w-full md:w-80 mx-1 focus:outline-none" placeholder=""> ]</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center text-sm font-bold text-gray-400 border-t border-dashed border-gray-300 pt-4">
+                    ※ 이 문서는 6개월 후 다시 꺼내 업데이트하세요. 커리어는 한 번의 결론이 아니라 지속적인 진화입니다.
+                </div>
+            </div>
+
+            <!-- Reflection Questions -->
+            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 print-break-inside-avoid no-print">
+                <h4 class="font-bold text-gray-800 mb-4 flex items-center gap-2">🔖 한 장을 완성한 뒤 마무리 셀프 체크</h4>
+                <div class="space-y-5 text-sm font-medium text-gray-700">
+                    <div><span class="text-blue-600 font-bold mr-2">Q1.</span> 지금 적은 교집합 키워드와 연결되는 경험이 이미 내 안에 있는가? 없다면, 어디서 어떻게 만들어갈 수 있는가?<br><textarea class="w-full mt-2 h-12 border border-gray-300 bg-white rounded p-2 focus:outline-none focus:border-blue-400 resize-none"></textarea></div>
+                    <div><span class="text-blue-600 font-bold mr-2">Q2.</span> 6개월 뒤 이 자기소개서를 다시 꺼냈을 때, 무엇이 달라져 있으면 좋겠는가?<br><textarea class="w-full mt-2 h-12 border border-gray-300 bg-white rounded p-2 focus:outline-none focus:border-blue-400 resize-none"></textarea></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 기능 2: 2가지 인쇄 옵션 제공 -->
+        <footer class="mt-12 pt-6 border-t border-gray-300 text-center no-print">
+            <h4 class="text-lg font-bold text-gray-800 mb-4">🖨️ 작성 완료! 어떻게 저장할까요?</h4>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+                <button onclick="printFullWorksheet()" class="bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-bold shadow-sm hover:bg-gray-300 transition w-full md:w-auto">
+                    과정 전체 인쇄하기 (Step 1~6)
+                </button>
+                <button onclick="printStep6Only()" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-bold shadow hover:bg-blue-700 transition w-full md:w-auto flex items-center justify-center gap-2">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                    최종 자기소개서(1장)만 깔끔하게 저장
+                </button>
+            </div>
+            <p class="text-xs text-gray-400 mt-4">단축키(Ctrl+P / Cmd+P)를 누르면 전체 문서가 인쇄됩니다.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        /* =========================================
+           1. AI 프롬프트 자동 완성 & 복사 기능 
+           ========================================= */
+        const interestInputs = document.querySelectorAll('.interest-input');
+        const strengthInputs = document.querySelectorAll('.strength-input');
+        const valueInputs = document.querySelectorAll('.value-input');
+
+        function getKeywordsString(inputs, fallbackText) {
+            const values = Array.from(inputs).map(input => input.value.trim()).filter(val => val !== '');
+            return values.length > 0 ? values.join(', ') : fallbackText;
+        }
+
+        function updatePrompts() {
+            const interests = getKeywordsString(interestInputs, '[ 여기에 흥미 키워드 입력 ]');
+            const strengths = getKeywordsString(strengthInputs, '[ 여기에 강점 키워드 입력 ]');
+            const values = getKeywordsString(valueInputs, '[ 여기에 가치관 키워드 입력 ]');
+
+            const prompt1Text = `나는 진로 탐색 중인 대학생이야.\n아래는 자기 이해 워크시트를 통해 추출한 나의 키워드야.\n\n【흥미 키워드】: ${interests}\n【강점 키워드】: ${strengths}\n【가치관 키워드】: ${values}\n\n이 키워드들을 바탕으로 다음 4가지를 분석해줘:\n① 세 영역에서 공통으로 등장하거나 연결되는 핵심 키워드는?\n② 이 키워드들로 만들 수 있는 "나는 이런 사람이다" 문장 3개 제안\n③ 이 키워드와 잘 맞는 대기업/스타트업 직무군 3~5개와 그 이유\n④ 내가 놓치고 있을 수 있는 강점이나 가능성이 있다면 솔직하게 짚어줘.`;
+
+            const prompt1El = document.getElementById('prompt-1');
+            if(prompt1El) prompt1El.innerText = prompt1Text;
+        }
+
+        [...interestInputs, ...strengthInputs, ...valueInputs].forEach(input => {
+            input.addEventListener('input', updatePrompts);
+        });
+
+        function copyPrompt(elementId) {
+            const textToCopy = document.getElementById(elementId).innerText;
+            const textArea = document.createElement("textarea");
+            textArea.value = textToCopy;
+            document.body.appendChild(textArea);
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                alert('프롬프트가 클립보드에 복사되었습니다!\n\nAI 챗봇 창에 붙여넣기(Ctrl+V) 하세요.');
+            } catch (err) {
+                alert('복사에 실패했습니다. 텍스트를 직접 드래그해서 복사해주세요.');
+            } finally {
+                document.body.removeChild(textArea);
+            }
+        }
+
+        /* =========================================
+           2. 진행률 표시바 (Scroll Tracking) 
+           ========================================= */
+        const sections = document.querySelectorAll('section[id^="step-"]');
+        const progressText = document.getElementById('progress-text');
+        const progressBarFill = document.getElementById('progress-bar-fill');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.3 // 섹션이 30% 보일 때 트리거
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const stepNum = entry.target.id.split('-')[1];
+                    progressText.innerText = `진행 상황: Step ${stepNum} / 6`;
+                    progressBarFill.style.width = `${(stepNum / 6) * 100}%`;
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+
+
+        /* =========================================
+           3. 로컬 스토리지 자동 저장 (Auto-save) 
+           ========================================= */
+        const allInputs = document.querySelectorAll('input:not([type="button"]), textarea');
+        
+        function saveFormData() {
+            const data = {};
+            allInputs.forEach((el, index) => {
+                // 각 input의 고유 식별자로 index를 활용
+                if (el.type === 'radio' || el.type === 'checkbox') {
+                    data[`field_${index}`] = el.checked;
+                } else {
+                    data[`field_${index}`] = el.value;
+                }
+            });
+            localStorage.setItem('careerWorksheetData', JSON.stringify(data));
+        }
+
+        function loadFormData() {
+            const saved = localStorage.getItem('careerWorksheetData');
+            if (saved) {
+                const data = JSON.parse(saved);
+                allInputs.forEach((el, index) => {
+                    const savedValue = data[`field_${index}`];
+                    if (savedValue !== undefined) {
+                        if (el.type === 'radio' || el.type === 'checkbox') {
+                            el.checked = savedValue;
+                        } else {
+                            el.value = savedValue;
+                        }
+                    }
+                });
+                updatePrompts(); // 로드 후 프롬프트 재업데이트
+            }
+        }
+
+        // 입력될 때마다 저장 실행
+        allInputs.forEach(input => {
+            input.addEventListener('input', saveFormData);
+            input.addEventListener('change', saveFormData);
+        });
+
+        // 페이지 로드 시 기존 데이터 불러오기
+        window.addEventListener('DOMContentLoaded', loadFormData);
+
+
+        /* =========================================
+           4. 인쇄 기능 분리 
+           ========================================= */
+        function printFullWorksheet() {
+            document.body.classList.remove('print-step6-only');
+            window.print();
+        }
+
+        function printStep6Only() {
+            // CSS에서 Step 6만 보이도록 하는 클래스 추가
+            document.body.classList.add('print-step6-only');
+            window.print();
+            
+            // 인쇄 대화상자가 뜨고 난 후 클래스 원복 (약간의 딜레이 필요)
+            setTimeout(() => {
+                document.body.classList.remove('print-step6-only');
+            }, 1000);
+        }
+
+    </script>
+</body>
+</html>
